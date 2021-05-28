@@ -1,0 +1,22 @@
+{
+    "name": "pridemoji",
+    "version": "1.0.0",
+    "description": "A collection of pride-themed emoji.",
+    "keywords": [
+        "lgbt",
+        "pride",
+        "emote",
+        "emoji",
+        "twemoji",
+        "discord",
+        "slack"
+    ],
+    "homepage": "https://github.com/tschrock/pridemoji#readme",
+    "bugs": "https://github.com/tschrock/pridemoji/issues",
+    "license": "MIT AND CC-BY-4.0",
+    "author": "CyberPon3 <cyber@code.horse>",
+    "repository": "github:tschrock/pridemoji",
+    "scripts": {
+        "render": "pwsh.exe -Command \"Get-ChildItem svg | ForEach-Object { resvg \\\"./svg/$($_.BaseName).svg\\\" \\\"./png/$($_.BaseName).png\\\" -w 360}\""
+    }
+}
