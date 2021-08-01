@@ -1,0 +1,204 @@
+{
+    "combinations": [
+        {
+            "templates": [
+                "flag",
+                "syringe",
+                "heart",
+                "heart-d"
+            ],
+            "prides": "*"
+        },
+        {
+            "templates": [
+                "eggplant"
+            ],
+            "prides": [
+                "gay"
+            ]
+        }
+    ],
+    "templates": {
+        "flag": {
+            "templateFile": "./templates/flag.svg",
+            "stripesContainerId": "stripes",
+            "stripesRotation": 0
+        },
+        "syringe": {
+            "templateFile": "./templates/syringe.svg",
+            "stripesContainerId": "stripes",
+            "stripesRotation": -45,
+            "accentIds": [
+                "accent1",
+                "accent2"
+            ]
+        },
+        "heart": {
+            "templateFile": "./templates/heart.svg",
+            "stripesContainerId": "stripes",
+            "stripesRotation": 0
+        },
+        "heart-d": {
+            "templateFile": "./templates/heart.svg",
+            "stripesContainerId": "stripes",
+            "stripesRotation": 45
+        },
+        "eggplant": {
+            "templateFile": "./templates/eggplant.svg",
+            "stripesContainerId": "stripes",
+            "stripesRotation": 45
+        }
+    },
+    "prides": {
+        "ace": {
+            "name": "Asexual",
+            "stripes": [
+                "#000000",
+                "#959595",
+                "#ffffff",
+                "#670066"
+            ],
+            "accents": [
+                "#670066"
+            ]
+        },
+        "agender": {
+            "name": "Agender",
+            "stripes": [
+                "#000000",
+                "#bcc5c6",
+                "#ffffff",
+                "#b5f582",
+                "#ffffff",
+                "#bcc5c6",
+                "#000000"
+            ]
+        },
+        "aro": {
+            "name": "Aromantic",
+            "stripes": [
+                "#3ca542",
+                "#a8d377",
+                "#fefefe",
+                "#a9a9a9",
+                "#000000"
+            ]
+        },
+        "bi": {
+            "name": "Bisexual",
+            "stripes": [
+                "#d70170",
+                "#d70170",
+                "#734f94",
+                "#0039a7",
+                "#0039a7"
+            ]
+        },
+        "enby": {
+            "name": "Non-Binary",
+            "stripes": [
+                "#fff433",
+                "#ffffff",
+                "#9b59d0",
+                "#2d2d2d"
+            ]
+        },
+        "gay": {
+            "name": "Gay",
+            "stripes": [
+                "#e50000",
+                "#ff8d00",
+                "#ffee00",
+                "#008121",
+                "#004cff",
+                "#760188"
+            ]
+        },
+        "fluid": {
+            "name": "Genderfluid",
+            "stripes": [
+                "#ff76a3",
+                "#ffffff",
+                "#bf11d7",
+                "#000000",
+                "#2f3cbe"
+            ]
+        },
+        "genderqueer": {
+            "name": "Genderqueer",
+            "stripes": [
+                "#b67edc",
+                "#ffffff",
+                "#4b8124"
+            ]
+        },
+        "lesbian": {
+            "name": "Lesbian",
+            "stripes": [
+                "#d72c00",
+                "#ef7427",
+                "#ff9856",
+                "#ffffff",
+                "#d162a6",
+                "#b75592",
+                "#a50162"
+            ]
+        },
+        "pan": {
+            "name": "pansexual",
+            "stripes": [
+                "#ff218c",
+                "#fed800",
+                "#21b1ff"
+            ]
+        },
+        "polyamorous": {
+            "name": "Polyamorous",
+            "stripes": [
+                "#ff7eb5",
+                "#ffe900",
+                "#4e4e4e",
+                "#00f2ff",
+                "#ab00ff"
+            ]
+        },
+        "polysexual": {
+            "name": "Polysexual",
+            "stripes": [
+                "#f61cb9",
+                "#07d569",
+                "#1c92f6"
+            ]
+        },
+        "trans": {
+            "name": "Transgender",
+            "stripes": [
+                "#5bcefa",
+                "#f5a9b8",
+                "#ffffff",
+                "#f5a9b8",
+                "#5bcefa"
+            ],
+            "accents": [
+                "#5bcefa",
+                "#f5a9b8"
+            ],
+            "variants": {
+                "blue": {
+                    "name": "Blue",
+                    "accents": [
+                        "#5bcefa",
+                        "#5bcefa"
+                    ]
+                },
+                "pink": {
+                    "name": "Pink",
+                    "accents": [
+                        "#f5a9b8",
+                        "#f5a9b8"
+                    ]
+                }
+            }
+        }
+    }
+}

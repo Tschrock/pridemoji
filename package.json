@@ -17,6 +17,14 @@
     "author": "CyberPon3 <cyber@code.horse>",
     "repository": "github:tschrock/pridemoji",
     "scripts": {
-        "render": "pwsh.exe -Command \"Get-ChildItem svg | ForEach-Object { resvg \\\"./svg/$($_.BaseName).svg\\\" \\\"./png/$($_.BaseName).png\\\" -w 360}\""
+        "build": "ts-node ./build.ts"
+    },
+    "devDependencies": {
+        "@types/node": "^16.4.7",
+        "resvg-node": "^0.1.2",
+        "svg-pathdata": "^6.0.0",
+        "svgdom": "^0.1.8",
+        "ts-node": "^10.1.0",
+        "typescript": "^4.3.5"
     }
 }

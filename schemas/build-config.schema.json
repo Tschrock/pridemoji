@@ -1,0 +1,170 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "build-config.schema.json",
+    "title": "Pridemoji build configuration",
+    "description": "The Pridemoji build configuration.",
+    "type": "object",
+    "properties": {
+        "combinations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "templates": {
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "const": "*"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/identifier"
+                                }
+                            }
+                        ]
+                    },
+                    "prides": {
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "const": "*"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/identifier"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "templates",
+                    "prides"
+                ]
+            }
+        },
+        "templates": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z-]+$": {
+                    "type": "object",
+                    "properties": {
+                        "templateFile": {
+                            "type": "string"
+                        },
+                        "stripesContainerId": {
+                            "type": "string"
+                        },
+                        "stripesRotation": {
+                            "type": "integer"
+                        },
+                        "accentIds": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": [
+                        "templateFile",
+                        "stripesContainerId"
+                    ],
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        },
+        "prides": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-zA-Z-]+$": {
+                    "type": "object",
+                    "description": "A pride",
+                    "properties": {
+                        "name": {
+                            "description": "The full name of the pride.",
+                            "type": "string"
+                        },
+                        "stripes": {
+                            "description": "The pride stripes.",
+                            "type": "array",
+                            "items": {
+                                "description": "The pride stripe color.",
+                                "type": "string",
+                                "format": "color-hex"
+                            }
+                        },
+                        "accents": {
+                            "description": "The pride accents. Defaults to the first stripe color.",
+                            "type": "array",
+                            "items": {
+                                "description": "The accent color.",
+                                "type": "string",
+                                "format": "color-hex"
+                            }
+                        },
+                        "variants": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^[a-zA-Z-]+$": {
+                                    "type": "object",
+                                    "description": "A pride",
+                                    "properties": {
+                                        "name": {
+                                            "description": "The full name of the pride.",
+                                            "type": "string"
+                                        },
+                                        "stripes": {
+                                            "description": "The pride stripes.",
+                                            "type": "array",
+                                            "items": {
+                                                "description": "The pride stripe color.",
+                                                "type": "string",
+                                                "format": "color-hex"
+                                            }
+                                        },
+                                        "accents": {
+                                            "description": "The pride accents.",
+                                            "type": "array",
+                                            "items": {
+                                                "description": "The accent color.",
+                                                "type": "string",
+                                                "format": "color-hex"
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "name"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "stripes"
+                    ],
+                    "additionalProperties": false
+                },
+                "uniqueItems": true
+            }
+        }
+    },
+    "required": [
+        "combinations",
+        "templates",
+        "prides"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+        "identifier": {
+            "type": "string",
+            "pattern": "^[a-zA-Z-]+$"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/build-config.json"
+            ],
+            "url": "/schemas/build-config.schema.json"
+        }
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+    }
+}
