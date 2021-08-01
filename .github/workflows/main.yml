@@ -1,0 +1,31 @@
+name: Build on release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: npm install
+        run: npm install
+      - name: npm build
+        run: npm build
+      - name: Zip Release
+        uses: TheDoctor0/zip-release@0.6.0
+        with:
+          filename: pridemoji.zip
+          directory: dist
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: pridemoji.zip
+        
