@@ -3,7 +3,7 @@ Pridemoji
 
 A collection of pride-themed emoji for slack/discord/etc.
 
-[Download](https://github.com/tschrock/pridemoji/releases/latest)
+[Download](https://github.com/Tschrock/pridemoji/releases/latest/download/pridemoji.zip)
 
 ## Building
 
