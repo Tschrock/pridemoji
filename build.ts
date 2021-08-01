@@ -216,7 +216,7 @@ async function run() {
     const buildConfig: BuildConfig = JSON.parse(await readFile("./build-config.json", { encoding: "utf-8" }));
 
     // Clean the dist directory
-    await rm("./dist", { recursive: true });
+    await rm("./dist", { force: true, recursive: true });
     await mkdir("./dist/svg", { recursive: true });
     await mkdir("./dist/png", { recursive: true });
 
