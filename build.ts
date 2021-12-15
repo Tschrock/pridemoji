@@ -3,7 +3,7 @@ import { readFile, rm, mkdir, writeFile } from 'fs/promises';
 // @ts-ignore, https://github.com/svgdotjs/svgdom/issues/69
 import { createSVGDocument, HTMLParser } from 'svgdom';
 import { SVGPathData } from 'svg-pathdata';
-import { render as renderSVG } from 'resvg-node';
+import { render as renderSVG } from '@resvg/resvg-js';
 
 interface BuildConfig {
     combinations: CombinationConfig[];
@@ -49,7 +49,7 @@ async function exportSvg(name: string, dom: Element) {
     await writeFile(`./dist/svg/${name}.svg`, svgDataFixed);
 
     // Render to a png
-    const pngData = renderSVG(svgDataFixed, { fitTo: { mode: 'width', value: 360 } } as any);
+    const pngData = renderSVG(svgDataFixed, { fitTo: { mode: 'width', value: 360 } });
 
     // Write the png
     await writeFile(`./dist/png/${name}.png`, pngData);
