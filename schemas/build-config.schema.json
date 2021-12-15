@@ -5,12 +5,23 @@
     "description": "The Pridemoji build configuration.",
     "type": "object",
     "properties": {
-        "combinations": {
+        "static": {
+            "description": "A list of static svg files to render.",
             "type": "array",
             "items": {
+                "description": "The path to an SVG file. Allows wildcards.",
+                "type": "string"
+            }
+        },
+        "combinations": {
+            "description": "A list of emoji combinations to generate.",
+            "type": "array",
+            "items": {
+                "description": "An emoji combination to generate.",
                 "type": "object",
                 "properties": {
                     "templates": {
+                        "description": "A list of the emoji templates to use, or a wildcard to include all templates.",
                         "oneOf": [
                             {
                                 "type": "string",
@@ -25,6 +36,7 @@
                         ]
                     },
                     "prides": {
+                        "description": "A list of pride colors to use, or a wildcard to include all prides.",
                         "oneOf": [
                             {
                                 "type": "string",
@@ -47,23 +59,30 @@
             }
         },
         "templates": {
+            "description": "A map of emoji templates.",
             "type": "object",
             "patternProperties": {
                 "^[a-zA-Z-]+$": {
+                    "description": "An emoji template.",
                     "type": "object",
                     "properties": {
                         "templateFile": {
+                            "description": "A path to the SVG template file.",
                             "type": "string"
                         },
                         "stripesContainerId": {
+                            "description": "The id of the element to draw stripes inside.",
                             "type": "string"
                         },
                         "stripesRotation": {
+                            "description": "The angle the stripes should be drawn at.",
                             "type": "integer"
                         },
                         "accentIds": {
+                            "description": "An array of accent containers to use for accent colors.",
                             "type": "array",
                             "items": {
+                                "description": "The id of the accent element.",
                                 "type": "string"
                             }
                         }
@@ -78,6 +97,7 @@
             "additionalProperties": false
         },
         "prides": {
+            "description": "A map of pride colors.",
             "type": "object",
             "patternProperties": {
                 "^[a-zA-Z-]+$": {
@@ -89,10 +109,10 @@
                             "type": "string"
                         },
                         "stripes": {
-                            "description": "The pride stripes.",
+                            "description": "The pride's stripe colors.",
                             "type": "array",
                             "items": {
-                                "description": "The pride stripe color.",
+                                "description": "The hexidecimal color of the stripe.",
                                 "type": "string",
                                 "format": "color-hex"
                             }
@@ -101,12 +121,13 @@
                             "description": "The pride accents. Defaults to the first stripe color.",
                             "type": "array",
                             "items": {
-                                "description": "The accent color.",
+                                "description": "The hexidecimal accent color.",
                                 "type": "string",
                                 "format": "color-hex"
                             }
                         },
                         "variants": {
+                            "description": "A map of color variations for a pride.",
                             "type": "object",
                             "patternProperties": {
                                 "^[a-zA-Z-]+$": {
