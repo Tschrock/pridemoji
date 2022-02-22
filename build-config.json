@@ -5,7 +5,9 @@
                 "flag",
                 "syringe",
                 "heart",
-                "heart-d"
+                "heart-d",
+                "ghost",
+                "cat"
             ],
             "prides": "*"
         },
@@ -47,6 +49,16 @@
             "templateFile": "./templates/eggplant.svg",
             "stripesContainerId": "stripes",
             "stripesRotation": 45
+        },
+        "ghost": {
+            "templateFile": "./templates/ghost.svg",
+            "stripesContainerId": "stripes",
+            "stripesRotation": 0
+        },
+        "cat": {
+            "templateFile": "./templates/cat.svg",
+            "stripesContainerId": "stripes",
+            "stripesRotation": 0
         }
     },
     "prides": {
