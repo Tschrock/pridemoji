@@ -199,6 +199,20 @@
                     ]
                 }
             }
+        },
+        "pastelorangegender": {
+            "name": "Pastelorangegender",
+            "stripes": [
+                "#ddd4e3",
+                "#ffffff",
+                "#fee7da",
+                "#ffd8be",
+                "#ffc9a7",
+                "#ddd4e3"
+            ],
+            "accents": [
+                "#ffc9a7"
+            ]
         }
     }
 }
