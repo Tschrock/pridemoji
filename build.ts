@@ -322,7 +322,7 @@ async function run() {
     // Fill in README
     const fileHost = "https://pridemoji.cp3.es/";
     const tableWidth = 7;
-    const cells = readmeData.map(({ svg, png }) => `<img src="${joinUrl(fileHost, png)}" height="64" /><br/> [svg](${joinUrl(fileHost, svg)}) - [png](${joinUrl(fileHost, png)})`);
+    const cells = readmeData.map(({name, svg, png }) => `<img src="${joinUrl(fileHost, png)}" height="64" title="${name}"/><br/> [svg](${joinUrl(fileHost, svg)}) - [png](${joinUrl(fileHost, png)})`);
     const table = "|" + Array(tableWidth).fill(" ").join("|") + "|\n"
         + "|" + Array(tableWidth).fill("-").join("|") + "|\n"
         + chunk(cells, tableWidth).map(c => "|" + c.join("|") + "|\n").join("");
