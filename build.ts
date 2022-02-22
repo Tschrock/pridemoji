@@ -36,7 +36,15 @@ interface PrideVariant {
     accents?: string[];
 }
 
+interface ReadmeData {
+    name: string;
+    svg: string;
+    png: string;
+}
+
 const DEBUG = false;
+
+const readmeData: ReadmeData[] = [];
 
 async function exportSvg(name: string, dom: Element) {
     // Export the SVG data
@@ -46,13 +54,21 @@ async function exportSvg(name: string, dom: Element) {
     const svgDataFixed = svgData.replace(/&quot;/g, '');
 
     // Write the SVG
-    await writeFile(`./dist/svg/${name}.svg`, svgDataFixed);
+    const svgLocation = `./dist/svg/${name}.svg`;
+    await writeFile(svgLocation, svgDataFixed);
 
     // Render to a png
     const pngData = renderSVG(svgDataFixed, { fitTo: { mode: 'width', value: 360 } });
 
     // Write the png
-    await writeFile(`./dist/png/${name}.png`, pngData);
+    const pngLocation = `./dist/png/${name}.png`;
+    await writeFile(pngLocation, pngData);
+
+    readmeData.push({
+        name,
+        svg: svgLocation,
+        png: pngLocation
+    });
 }
 
 function roundToDecimal(num: number, decimals: number): string {
@@ -279,7 +295,7 @@ async function run() {
                 }
 
                 // Export
-                exportSvg(`${prideId}-${templateId}`, root);
+                await exportSvg(`${prideId}-${templateId}`, root);
 
                 // Handle variants
                 if (template.accentIds && pride.variants) {
@@ -296,12 +312,44 @@ async function run() {
                         }
 
                         // Export
-                        exportSvg(`${prideId}-${templateId}-${variantId}`, variantRoot);
+                        await exportSvg(`${prideId}-${templateId}-${variantId}`, variantRoot);
                     }
                 }
             }
         }
     }
+
+    // Fill in README
+    const fileHost = "https://pridemoji.cp3.es/";
+    const tableWidth = 7;
+    const cells = readmeData.map(({ svg, png }) => `<img src="${joinUrl(fileHost, png)}" height="64" /><br/> [svg](${joinUrl(fileHost, svg)}) - [png](${joinUrl(fileHost, png)})`);
+    const table = "|" + Array(tableWidth).fill(" ").join("|") + "|\n"
+        + "|" + Array(tableWidth).fill("-").join("|") + "|\n"
+        + chunk(cells, tableWidth).map(c => "|" + c.join("|") + "|\n").join("");
+
+    const readmeContent = await readFile("./README.md");
+    const startIndex = readmeContent.indexOf("<!-- EMOJIGRID -->");
+    const endIndex = readmeContent.indexOf("<!-- ENDEMOJIGRID -->");
+    const newContent = readmeContent.slice(0, startIndex)
+        + "<!-- EMOJIGRID -->\n"
+        + table
+        + readmeContent.slice(endIndex);
+
+    await writeFile("./README.md", newContent);
+}
+
+function joinUrl(a: string, b: string) {
+    return b.replace("./dist", a);
+    //return new URL(b, a).href;
+}
+
+function chunk<T>(arr: T[], size: number) {
+    const rtn = [];
+    let i, j;
+    for (i = 0, j = arr.length; i < j; i += size) {
+        rtn.push(arr.slice(i, i + size));
+    }
+    return rtn;
 }
 
 run().catch(console.error);
