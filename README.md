@@ -14,8 +14,6 @@ A collection of pride-themed emoji for slack/discord/etc.
 
 ## License
 
-All emoji here are based on Twitter's [Twemoji](https://twemoji.twitter.com/) and therefore fall under the same licensing restrictions.
+Check each template/svg file for their respective sources and copyright information.
 
-Code licensed under the MIT License: http://opensource.org/licenses/MIT
-
-Graphics licensed under CC-BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Source code is licensed under the MIT License: http://opensource.org/licenses/MIT

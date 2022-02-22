@@ -1,4 +1,4 @@
+<!-- Based on Twemoji (CC-BY 4.0) -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">
-    <path id="stripes" fill="#EEE"
-        d="M36 27c0 2.209-1.791 4-4 4H4c-2.209 0-4-1.791-4-4V9c0-2.209 1.791-4 4-4h28c2.209 0 4 1.791 4 4v18z" />
+    <path id="stripes" fill="#EEE" d="M36 27c0 2.209-1.791 4-4 4H4c-2.209 0-4-1.791-4-4V9c0-2.209 1.791-4 4-4h28c2.209 0 4 1.791 4 4v18z" />
 </svg>
