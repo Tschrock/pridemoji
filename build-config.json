@@ -216,6 +216,37 @@
                 "drop1": "#ffc9a7",
                 "drop2": "#ffc9a7"
             }
+        },
+        "aroace": {
+            "name": "Aromantic Asexual",
+            "stripes": [
+                "#e38d00",
+                "#ecce00",
+                "#ffffff",
+                "#62afdd",
+                "#1a3555"
+            ],
+            "accents": {
+                "drop1": "#e38d00",
+                "drop2": "#e38d00"
+            },
+            "variants": {
+                "alt": {
+                    "name": "Alt",
+                    "stripes": [
+                        "#000000",
+                        "#670066",
+                        "#959595",
+                        "#ffffff",
+                        "#a8d377",
+                        "#3ca542"
+                    ],
+                    "accents": {
+                        "drop1": "#670066",
+                        "drop2": "#3ca542"
+                    }
+                }
+            }
         }
     }
 }
