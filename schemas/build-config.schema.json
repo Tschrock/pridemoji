@@ -66,11 +66,15 @@
                     "description": "An emoji template.",
                     "type": "object",
                     "properties": {
+                        "name": {
+                            "description": "The full name of the template.",
+                            "type": "string"
+                        },
                         "templateFile": {
                             "description": "A path to the SVG template file.",
                             "type": "string"
                         },
-                        "stripesContainerId": {
+                        "stripesId": {
                             "description": "The id of the element to draw stripes inside.",
                             "type": "string"
                         },
@@ -88,8 +92,9 @@
                         }
                     },
                     "required": [
+                        "name",
                         "templateFile",
-                        "stripesContainerId"
+                        "stripesId"
                     ],
                     "additionalProperties": false
                 }
@@ -119,11 +124,13 @@
                         },
                         "accents": {
                             "description": "The pride accents. Defaults to the first stripe color.",
-                            "type": "array",
-                            "items": {
-                                "description": "The hexidecimal accent color.",
-                                "type": "string",
-                                "format": "color-hex"
+                            "type": "object",
+                            "patternProperties": {
+                                "^[a-zA-Z-]+$": {
+                                    "description": "The hexidecimal accent color.",
+                                    "type": "string",
+                                    "format": "color-hex"
+                                }
                             }
                         },
                         "variants": {
@@ -148,12 +155,14 @@
                                             }
                                         },
                                         "accents": {
-                                            "description": "The pride accents.",
-                                            "type": "array",
-                                            "items": {
-                                                "description": "The accent color.",
-                                                "type": "string",
-                                                "format": "color-hex"
+                                            "description": "The pride accents. Defaults to the first stripe color.",
+                                            "type": "object",
+                                            "patternProperties": {
+                                                "^[a-zA-Z-]+$": {
+                                                    "description": "The hexidecimal accent color.",
+                                                    "type": "string",
+                                                    "format": "color-hex"
+                                                }
                                             }
                                         }
                                     },

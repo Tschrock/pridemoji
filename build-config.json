@@ -1,55 +1,52 @@
 {
+    "static": [
+        "./assets/**/*.svg"
+    ],
     "combinations": [
         {
-            "templates": [
-                "flag",
-                "syringe",
-                "heart",
-                "heart-d",
-                "ghost",
-                "cat"
-            ],
+            "templates": "*",
             "prides": "*"
         }
     ],
     "templates": {
         "flag": {
+            "name": "Flag",
             "templateFile": "./templates/flag.svg",
-            "stripesContainerId": "stripes",
+            "stripesId": "stripes",
             "stripesRotation": 0
         },
         "syringe": {
+            "name": "Syringe",
             "templateFile": "./templates/syringe.svg",
-            "stripesContainerId": "stripes",
+            "stripesId": "stripes",
             "stripesRotation": -45,
             "accentIds": [
-                "accent1",
-                "accent2"
+                "drop1",
+                "drop2"
             ]
         },
         "heart": {
+            "name": "Heart",
             "templateFile": "./templates/heart.svg",
-            "stripesContainerId": "stripes",
+            "stripesId": "stripes",
             "stripesRotation": 0
         },
         "heart-d": {
+            "name": "Diagonal Heart",
             "templateFile": "./templates/heart.svg",
-            "stripesContainerId": "stripes",
-            "stripesRotation": 45
-        },
-        "eggplant": {
-            "templateFile": "./templates/eggplant.svg",
-            "stripesContainerId": "stripes",
+            "stripesId": "stripes",
             "stripesRotation": 45
         },
         "ghost": {
+            "name": "Ghost",
             "templateFile": "./templates/ghost.svg",
-            "stripesContainerId": "stripes",
+            "stripesId": "stripes",
             "stripesRotation": 0
         },
         "cat": {
+            "name": "Kitty",
             "templateFile": "./templates/cat.svg",
-            "stripesContainerId": "stripes",
+            "stripesId": "stripes",
             "stripesRotation": 0
         }
     },
@@ -62,9 +59,10 @@
                 "#ffffff",
                 "#670066"
             ],
-            "accents": [
-                "#670066"
-            ]
+            "accents": {
+                "drop1": "#670066",
+                "drop2": "#670066"
+            }
         },
         "agender": {
             "name": "Agender",
@@ -149,7 +147,7 @@
             ]
         },
         "pan": {
-            "name": "pansexual",
+            "name": "Pansexual",
             "stripes": [
                 "#ff218c",
                 "#fed800",
@@ -183,24 +181,24 @@
                 "#f5a9b8",
                 "#5bcefa"
             ],
-            "accents": [
-                "#5bcefa",
-                "#f5a9b8"
-            ],
+            "accents": {
+                "drop1": "#5bcefa",
+                "drop2": "#f5a9b8"
+            },
             "variants": {
                 "blue": {
                     "name": "Blue",
-                    "accents": [
-                        "#5bcefa",
-                        "#5bcefa"
-                    ]
+                    "accents": {
+                        "drop1": "#5bcefa",
+                        "drop2": "#5bcefa"
+                    }
                 },
                 "pink": {
                     "name": "Pink",
-                    "accents": [
-                        "#f5a9b8",
-                        "#f5a9b8"
-                    ]
+                    "accents": {
+                        "drop1": "#f5a9b8",
+                        "drop2": "#f5a9b8"
+                    }
                 }
             }
         },
@@ -214,9 +212,10 @@
                 "#ffc9a7",
                 "#ddd4e3"
             ],
-            "accents": [
-                "#ffc9a7"
-            ]
+            "accents": {
+                "drop1": "#ffc9a7",
+                "drop2": "#ffc9a7"
+            }
         }
     }
 }

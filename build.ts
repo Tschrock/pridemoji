@@ -17,8 +17,9 @@ interface CombinationConfig {
 }
 
 interface TemplateConfig {
+    name: string;
     templateFile: string;
-    stripesContainerId: string;
+    stripesId: string;
     stripesRotation?: number;
     accentIds?: string[];
 }
@@ -26,17 +27,18 @@ interface TemplateConfig {
 interface PrideConfig {
     name: string;
     stripes: string[];
-    accents?: string[];
+    accents?: Record<string, string>;
     variants?: Record<string, PrideVariant>;
 }
 
 interface PrideVariant {
     name: string;
     stripes?: string[];
-    accents?: string[];
+    accents?: Record<string, string>;
 }
 
 interface ReadmeData {
+    id: string;
     name: string;
     svg: string;
     png: string;
@@ -46,7 +48,7 @@ const DEBUG = false;
 
 const readmeData: ReadmeData[] = [];
 
-async function exportSvg(name: string, dom: Element) {
+async function exportSvg(name: string, id: string, dom: Element) {
     // Export the SVG data
     const svgData = dom.outerHTML;
 
@@ -54,18 +56,18 @@ async function exportSvg(name: string, dom: Element) {
     const svgDataFixed = svgData.replace(/&quot;/g, '');
 
     // Write the SVG
-    const svgLocation = `./dist/svg/${name}.svg`;
+    const svgLocation = `./dist/svg/${id}.svg`;
     await writeFile(svgLocation, svgDataFixed);
 
     // Render to a png
     const pngData = renderSVG(svgDataFixed, { fitTo: { mode: 'width', value: 360 } });
 
     // Write the png
-    const pngLocation = `./dist/png/${name}.png`;
+    const pngLocation = `./dist/png/${id}.png`;
     await writeFile(pngLocation, pngData);
 
     readmeData.push({
-        name,
+        id, name,
         svg: svgLocation,
         png: pngLocation
     });
@@ -212,11 +214,11 @@ function fillStripes(templateDom: Element, id: string, stripes: string[], rotati
     clipPath.appendChild(stripeContainer);
 }
 
-function fillAccents(element: Element, accentIds: string[], accentColors: string[], fallbackColor: string) {
-    accentIds.forEach((value, i) => {
+function fillAccents(element: Element, accentIds: string[], accentColors: Map<string, string>, fallbackColor: string) {
+    accentIds.forEach((value) => {
         const accent = element.querySelector("#" + value);
         if (accent) {
-            accent.setAttribute("fill", accentColors[i] || accentColors[0] || fallbackColor);
+            accent.setAttribute("fill", accentColors.get(value) || fallbackColor);
         }
     });
 }
@@ -279,40 +281,50 @@ async function run() {
 
         // Combine
         for (const [templateId, template] of comboTemplates) {
+
             const templateFileContent = await readFile(template.templateFile, { encoding: "utf-8" });
+            const templateAccentIds = template.accentIds || [];
+
             for (const [prideId, pride] of comboPrides) {
                 console.log(`Generating ${prideId}-${templateId}`);
+
 
                 // Parse the template
                 const root = parseSVG(templateFileContent);
 
                 // Fill the stripes
-                fillStripes(root, template.stripesContainerId, pride.stripes, template.stripesRotation || 0);
+                fillStripes(root, template.stripesId, pride.stripes, template.stripesRotation || 0);
 
                 // Fill accents
                 if (template.accentIds) {
-                    fillAccents(root, template.accentIds, pride.accents || [], pride.stripes[0] || "red");
+                    const prideAccents = new Map(Object.entries(pride.accents || {}).filter(([k]) => templateAccentIds.includes(k)))
+                    fillAccents(root, template.accentIds, prideAccents, pride.stripes[0] || "red");
                 }
 
                 // Export
-                await exportSvg(`${prideId}-${templateId}`, root);
+                await exportSvg(`${pride.name} ${template.name}`, `${prideId}-${templateId}`, root);
 
                 // Handle variants
-                if (template.accentIds && pride.variants) {
+                if (pride.variants) {
                     for (const [variantId, variant] of Object.entries(pride.variants)) {
-                        // Parse the template
-                        const variantRoot = parseSVG(templateFileContent);
+                        // Only render the variant if it has new stripes or new accents
+                        if (variant.stripes || (variant.accents && Object.keys(variant.accents).some(k => templateAccentIds.includes(k)))) {
 
-                        // Fill the stripes
-                        fillStripes(variantRoot, template.stripesContainerId, variant.stripes || pride.stripes, template.stripesRotation || 0);
+                            // Parse the template
+                            const variantRoot = parseSVG(templateFileContent);
 
-                        // Fill accents
-                        if (template.accentIds) {
-                            fillAccents(variantRoot, template.accentIds, variant.accents || pride.accents || [], variant.stripes?.[0] || pride.stripes[0] || "red");
+                            // Fill the stripes
+                            fillStripes(variantRoot, template.stripesId, variant.stripes || pride.stripes, template.stripesRotation || 0);
+
+                            // Fill accents
+                            if (template.accentIds) {
+                                const variantAccents = new Map(Object.entries(variant.accents || pride.accents || {}).filter(([k]) => templateAccentIds.includes(k)))
+                                fillAccents(variantRoot, template.accentIds, variantAccents, variant.stripes?.[0] || pride.stripes[0] || "red");
+                            }
+
+                            // Export
+                            await exportSvg(`${pride.name} ${template.name} (${variant.name})`, `${prideId}-${variantId}-${templateId}`, variantRoot);
                         }
-
-                        // Export
-                        await exportSvg(`${prideId}-${templateId}-${variantId}`, variantRoot);
                     }
                 }
             }
@@ -322,7 +334,7 @@ async function run() {
     // Fill in README
     const fileHost = "https://pridemoji.cp3.es/";
     const tableWidth = 7;
-    const cells = readmeData.map(({name, svg, png }) => `<img src="${joinUrl(fileHost, png)}" height="64" title="${name}"/><br/> [svg](${joinUrl(fileHost, svg)}) - [png](${joinUrl(fileHost, png)})`);
+    const cells = readmeData.map(({ name, svg, png }) => `${name}<br/><img src="${joinUrl(fileHost, png)}" height="64" title="${name}"/><br/> [svg](${joinUrl(fileHost, svg)}) - [png](${joinUrl(fileHost, png)})`);
     const table = "|" + Array(tableWidth).fill(" ").join("|") + "|\n"
         + "|" + Array(tableWidth).fill("-").join("|") + "|\n"
         + chunk(cells, tableWidth).map(c => "|" + c.join("|") + "|\n").join("");
