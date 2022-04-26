@@ -48,6 +48,24 @@
             "templateFile": "./templates/cat.svg",
             "stripesId": "stripes",
             "stripesRotation": 0
+        },
+        "sparkling-heart": {
+            "name": "Sparkling Heart",
+            "templateFile": "./templates/sparkling-heart.svg",
+            "stripesId": "stripes",
+            "stripesRotation": 0
+        },
+        "sparkling-heart-d": {
+            "name": "Diagonal Sparkling Heart",
+            "templateFile": "./templates/sparkling-heart.svg",
+            "stripesId": "stripes",
+            "stripesRotation": 45
+        },
+        "egg": {
+            "name": "Egg",
+            "templateFile": "./templates/egg.svg",
+            "stripesId": "stripes",
+            "stripesRotation": 0
         }
     },
     "prides": {
