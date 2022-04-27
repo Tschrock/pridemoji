@@ -55,9 +55,38 @@ async function exportSvg(name: string, id: string, dom: Element) {
     // Remove &quot; since this breaks resvg
     const svgDataFixed = svgData.replace(/&quot;/g, '');
 
+const frontMater = id.endsWith("heart") || id.endsWith("heart-d") || id.endsWith("flag") || id.endsWith("syringe") || id.endsWith("egg") ? `---
+title: ${name}
+sources:
+ - name: CyberPon3
+   link: https://twitter.com/CyberPon3
+ - name: Twemoji
+   link: https://twemoji.twitter.com/
+license: CC-BY-NC-4.0
+---
+` : id.endsWith("cat") ? `---
+title: ${name}
+sources:
+ - name: CyberPon3
+   link: https://twitter.com/CyberPon3
+ - name: Noto Emoji
+   link: https://github.com/googlefonts/noto-emoji/blob/f2a4f72b/svg/emoji_u1f408.svg
+license: Apache License 2.0
+---
+` : id.endsWith("ghost") ? `---
+title: ${name}
+sources:
+ - name: CyberPon3
+   link: https://twitter.com/CyberPon3
+ - name: Noto Emoji
+   link: https://github.com/googlefonts/noto-emoji/blob/617db977/svg/emoji_u1f47b.svg
+license: Apache License 2.0
+---
+` : ""
+
     // Write the SVG
     const svgLocation = `./dist/svg/${id}.svg`;
-    await writeFile(svgLocation, svgDataFixed);
+    await writeFile(svgLocation, frontMater + svgDataFixed);
 
     // Render to a png
     const pngData = renderSVG(svgDataFixed, { fitTo: { mode: 'width', value: 360 } });
