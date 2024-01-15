@@ -3,7 +3,7 @@ import { readFile, rm, mkdir, writeFile } from 'fs/promises';
 // @ts-ignore, https://github.com/svgdotjs/svgdom/issues/69
 import { createSVGDocument, HTMLParser } from 'svgdom';
 import { SVGPathData } from 'svg-pathdata';
-import { render as renderSVG } from '@resvg/resvg-js';
+import { renderAsync as renderSVG } from '@resvg/resvg-js';
 
 interface BuildConfig {
     combinations: CombinationConfig[];
@@ -22,6 +22,7 @@ interface TemplateConfig {
     stripesId: string;
     stripesRotation?: number;
     accentIds?: string[];
+    meta?: Metadata;
 }
 
 interface PrideConfig {
@@ -44,56 +45,37 @@ interface ReadmeData {
     png: string;
 }
 
+interface Metadata {
+    sources?: Array<{ name: string, link: string }>;
+    license?: string;
+}
+
 const DEBUG = false;
 
 const readmeData: ReadmeData[] = [];
 
-async function exportSvg(name: string, id: string, dom: Element) {
+async function exportSvg(name: string, id: string, meta: Metadata, dom: Element) {
     // Export the SVG data
     const svgData = dom.outerHTML;
 
     // Remove &quot; since this breaks resvg
     const svgDataFixed = svgData.replace(/&quot;/g, '');
 
-const frontMater = id.endsWith("heart") || id.endsWith("heart-d") || id.endsWith("flag") || id.endsWith("syringe") || id.endsWith("egg") ? `---
-title: ${name}
-sources:
- - name: CyberPon3
-   link: https://twitter.com/CyberPon3
- - name: Twemoji
-   link: https://twemoji.twitter.com/
-license: CC-BY-NC-4.0
----
-` : id.endsWith("cat") ? `---
-title: ${name}
-sources:
- - name: CyberPon3
-   link: https://twitter.com/CyberPon3
- - name: Noto Emoji
-   link: https://github.com/googlefonts/noto-emoji/blob/f2a4f72b/svg/emoji_u1f408.svg
-license: Apache License 2.0
----
-` : id.endsWith("ghost") ? `---
-title: ${name}
-sources:
- - name: CyberPon3
-   link: https://twitter.com/CyberPon3
- - name: Noto Emoji
-   link: https://github.com/googlefonts/noto-emoji/blob/617db977/svg/emoji_u1f47b.svg
-license: Apache License 2.0
----
-` : ""
-
     // Write the SVG
     const svgLocation = `./dist/svg/${id}.svg`;
-    await writeFile(svgLocation, frontMater + svgDataFixed);
+    await writeFile(svgLocation, svgDataFixed);
+
+    // Write the metadata
+    const metadata = { name, ...meta };
+    const metaLocation = `./dist/json/${id}.json`;
+    await writeFile(metaLocation, JSON.stringify(metadata));
 
     // Render to a png
-    const pngData = renderSVG(svgDataFixed, { fitTo: { mode: 'width', value: 360 } });
+    const pngData = await renderSVG(svgDataFixed, { fitTo: { mode: 'width', value: 360 } });
 
     // Write the png
     const pngLocation = `./dist/png/${id}.png`;
-    await writeFile(pngLocation, pngData);
+    await writeFile(pngLocation, pngData.asPng());
 
     readmeData.push({
         id, name,
@@ -200,14 +182,16 @@ function fillStripes(templateDom: Element, id: string, stripes: string[], rotati
         });
     }
 
+    const parent = stripeContainer.parentNode as Element ?? templateDom;
+
     // Create a group for all the stripes
-    const stripesGroup = addElement(templateDom, 'g', {
+    const stripesGroup = addElement(parent, 'g', {
         "transform": `rotate(${-rotation})`, // Rotate the stripes
         "clip-path": "url(#stripesClip)" // Clip the stripes
     });
 
     // Make sure it's in the right layer
-    templateDom.insertBefore(stripesGroup, stripeContainer);
+    parent.insertBefore(stripesGroup, stripeContainer);
 
     // Fill the bounding box with stripes
     const stripeCount = stripes.length;
@@ -266,6 +250,7 @@ async function run() {
     await rm("./dist", { force: true, recursive: true });
     await mkdir("./dist/svg", { recursive: true });
     await mkdir("./dist/png", { recursive: true });
+    await mkdir("./dist/json", { recursive: true });
 
     // Generate emotes
     const { combinations, templates, prides } = buildConfig;
@@ -331,7 +316,7 @@ async function run() {
                 }
 
                 // Export
-                await exportSvg(`${pride.name} ${template.name}`, `${prideId}-${templateId}`, root);
+                await exportSvg(`${pride.name} ${template.name}`, `${prideId}-${templateId}`, template.meta ?? {}, root);
 
                 // Handle variants
                 if (pride.variants) {
@@ -352,7 +337,7 @@ async function run() {
                             }
 
                             // Export
-                            await exportSvg(`${pride.name} ${template.name} (${variant.name})`, `${prideId}-${variantId}-${templateId}`, variantRoot);
+                            await exportSvg(`${pride.name} ${template.name} (${variant.name})`, `${prideId}-${variantId}-${templateId}`, template.meta ?? {}, variantRoot);
                         }
                     }
                 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" version="1.1" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <rect x="34.25" y="59.75" width="59.5" height="51" fill="#283cae" id="stripes"/>
+    <rect x="51.25" y="59.75" width="8.5" height="8.5" fill="#e5e5e5"/>
+    <rect x="34.25" y="59.75" width="8.5" height="8.5" fill="#e5e5e5"/>
+    <rect x="85.25" y="59.75" width="8.5" height="8.5" fill="#bbb"/>
+    <rect x="42.75" y="51.25" width="8.5" height="8.5" fill="#e5e5e5"/>
+    <rect x="51.25" y="34.25" width="8.5" height="17" fill="#cfcfcf"/>
+    <rect x="68.25" y="34.25" width="8.5" height="17" fill="#bbb"/>
+    <rect x="76.75" y="51.25" width="8.5" height="8.5" fill="#bbb"/>
+    <rect x="42.75" y="68.25" width="8.5" height="17" fill="#e5e5e5"/>
+    <rect x="25.75" y="68.25" width="8.5" height="8.5" fill="#e5e5e5"/>
+    <rect x="25.75" y="76.75" width="8.5" height="34" fill="#cfcfcf"/>
+    <rect x="34.25" y="102.25" width="8.5" height="8.5" fill="#bbb"/>
+    <rect x="42.75" y="110.75" width="42.5" height="8.5" fill="#bbb"/>
+    <rect x="68.25" y="102.25" width="8.5" height="9.5" fill="#bbb"/>
+    <rect x="76.75" y="85.25" width="8.5" height="17" fill="#bbb"/>
+    <rect x="93.75" y="68.25" width="8.5" height="42.5" fill="#bbb"/>
+    <rect x="85.25" y="102.25" width="9.5" height="8.5" fill="#bbb"/>
+    <rect x="42.75" y="17.25" width="8.5" height="17" fill="#e5e5e5"/>
+    <rect x="76.75" y="17.25" width="8.5" height="8.5" fill="#e5e5e5"/>
+    <rect x="76.75" y="25.75" width="8.5" height="8.5" fill="#cfcfcf"/>
+    <rect x="51.25" y="8.75" width="8.5" height="8.5" fill="#f06d45"/>
+    <rect x="59.75" y="8.75" width="8.5" height="8.5" fill="#d7542b"/>
+    <rect x="68.25" y="8.75" width="8.5" height="8.5" fill="#c2451d"/>
+    <rect x="51.25" y="25.75" width="8.5" height="8.5" fill="#dc5c34"/>
+    <rect x="59.75" y="25.75" width="8.5" height="8.5" fill="#c44318"/>
+    <rect x="68.25" y="25.75" width="8.5" height="8.5" fill="#af340b"/>
+    <rect x="51.25" y="17.25" width="25.5" height="8.5" fill="#d7b1a6"/>
+</svg>

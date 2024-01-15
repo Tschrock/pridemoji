@@ -13,7 +13,14 @@
             "name": "Flag",
             "templateFile": "./templates/flag.svg",
             "stripesId": "stripes",
-            "stripesRotation": 0
+            "stripesRotation": 0,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
+                ],
+                "license": "CC-BY-4.0"
+            }
         },
         "syringe": {
             "name": "Syringe",
@@ -23,49 +30,118 @@
             "accentIds": [
                 "drop1",
                 "drop2"
-            ]
+            ],
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
+                ],
+                "license": "CC-BY-4.0"
+            }
         },
         "heart": {
             "name": "Heart",
             "templateFile": "./templates/heart.svg",
             "stripesId": "stripes",
-            "stripesRotation": 0
+            "stripesRotation": 0,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
+                ],
+                "license": "CC-BY-4.0"
+            }
         },
         "heart-d": {
             "name": "Diagonal Heart",
             "templateFile": "./templates/heart.svg",
             "stripesId": "stripes",
-            "stripesRotation": 45
+            "stripesRotation": 45,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
+                ],
+                "license": "CC-BY-4.0"
+            }
         },
         "ghost": {
             "name": "Ghost",
             "templateFile": "./templates/ghost.svg",
             "stripesId": "stripes",
-            "stripesRotation": 0
+            "stripesRotation": 0,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Noto Emoji", "link": "https://github.com/googlefonts/noto-emoji/blob/617db977/svg/emoji_u1f47b.svg" }
+                ],
+                "license": "CC-BY-NC-4.0"
+            }
         },
         "cat": {
             "name": "Kitty",
             "templateFile": "./templates/cat.svg",
             "stripesId": "stripes",
-            "stripesRotation": 0
+            "stripesRotation": 0,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Noto Emoji", "link": "https://github.com/googlefonts/noto-emoji/blob/f2a4f72b/svg/emoji_u1f408.svg" }
+                ],
+                "license": "CC-BY-NC-4.0"
+            }
         },
         "sparkling-heart": {
             "name": "Sparkling Heart",
             "templateFile": "./templates/sparkling-heart.svg",
             "stripesId": "stripes",
-            "stripesRotation": 0
+            "stripesRotation": 0,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
+                ],
+                "license": "CC-BY-4.0"
+            }
         },
         "sparkling-heart-d": {
             "name": "Diagonal Sparkling Heart",
             "templateFile": "./templates/sparkling-heart.svg",
             "stripesId": "stripes",
-            "stripesRotation": 45
+            "stripesRotation": 45,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
+                ],
+                "license": "CC-BY-4.0"
+            }
         },
         "egg": {
             "name": "Egg",
             "templateFile": "./templates/egg.svg",
             "stripesId": "stripes",
-            "stripesRotation": 0
+            "stripesRotation": 0,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
+                ],
+                "license": "CC-BY-4.0"
+            }
+        },
+        "pill": {
+            "name": "Pill",
+            "templateFile": "./templates/pill.svg",
+            "stripesId": "stripes",
+            "stripesRotation": 45,
+            "meta": {
+                "sources": [
+                    { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
+                    { "name": "Noto Emoji", "link": "https://github.com/googlefonts/noto-emoji/blob/341cf6add6aac745fc578197f0ac6bac5b93e010/svg/emoji_u1f48a.svg" }
+                ],
+                "license": "CC-BY-NC-4.0"
+            }
         }
     },
     "prides": {
@@ -175,11 +251,9 @@
         "polyamorous": {
             "name": "Polyamorous",
             "stripes": [
-                "#ff7eb5",
-                "#ffe900",
-                "#4e4e4e",
-                "#00f2ff",
-                "#ab00ff"
+                "#340c46",
+                "#e50051",
+                "#009fe3"
             ]
         },
         "polysexual": {
@@ -220,20 +294,13 @@
                 }
             }
         },
-        "pastelorangegender": {
-            "name": "Pastelorangegender",
+        "androgyne": {
+            "name": "Androgyne",
             "stripes": [
-                "#ddd4e3",
-                "#ffffff",
-                "#fee7da",
-                "#ffd8be",
-                "#ffc9a7",
-                "#ddd4e3"
-            ],
-            "accents": {
-                "drop1": "#ffc9a7",
-                "drop2": "#ffc9a7"
-            }
+                "#fe007f",
+                "#9832ff",
+                "#00b8e7"
+            ]
         },
         "aroace": {
             "name": "Aromantic Asexual",
