@@ -4,6 +4,7 @@ import { readFile, rm, mkdir, writeFile } from 'fs/promises';
 import { createSVGDocument, HTMLParser } from 'svgdom';
 import { SVGPathData } from 'svg-pathdata';
 import { renderAsync as renderSVG } from '@resvg/resvg-js';
+import YAML from 'json-to-pretty-yaml';
 
 interface BuildConfig {
     combinations: CombinationConfig[];
@@ -30,12 +31,14 @@ interface PrideConfig {
     stripes: string[];
     accents?: Record<string, string>;
     variants?: Record<string, PrideVariant>;
+    tags?: string[];
 }
 
 interface PrideVariant {
     name: string;
     stripes?: string[];
     accents?: Record<string, string>;
+    tags?: string[];
 }
 
 interface ReadmeData {
@@ -48,6 +51,7 @@ interface ReadmeData {
 interface Metadata {
     sources?: Array<{ name: string, link: string }>;
     license?: string;
+    tags?: string[];
 }
 
 const DEBUG = false;
@@ -67,8 +71,8 @@ async function exportSvg(name: string, id: string, meta: Metadata, dom: Element)
 
     // Write the metadata
     const metadata = { name, ...meta };
-    const metaLocation = `./dist/json/${id}.json`;
-    await writeFile(metaLocation, JSON.stringify(metadata));
+    await writeFile(`./dist/json/${id}.json`, JSON.stringify(metadata));
+    await writeFile(`./dist/yaml/${id}.svg.yml`, YAML.stringify(metadata));
 
     // Render to a png
     const pngData = await renderSVG(svgDataFixed, { fitTo: { mode: 'width', value: 360 } });
@@ -251,6 +255,7 @@ async function run() {
     await mkdir("./dist/svg", { recursive: true });
     await mkdir("./dist/png", { recursive: true });
     await mkdir("./dist/json", { recursive: true });
+    await mkdir("./dist/yaml", { recursive: true });
 
     // Generate emotes
     const { combinations, templates, prides } = buildConfig;
@@ -315,8 +320,16 @@ async function run() {
                     fillAccents(root, template.accentIds, prideAccents, pride.stripes[0] || "red");
                 }
 
+                const meta = {
+                    ...template.meta,
+                    tags: [
+                        ...(template.meta?.tags || []),
+                        ...(pride.tags || []),
+                    ]
+                }
+
                 // Export
-                await exportSvg(`${pride.name} ${template.name}`, `${prideId}-${templateId}`, template.meta ?? {}, root);
+                await exportSvg(`${pride.name} ${template.name}`, `${prideId}-${templateId}`, meta, root);
 
                 // Handle variants
                 if (pride.variants) {
@@ -336,8 +349,16 @@ async function run() {
                                 fillAccents(variantRoot, template.accentIds, variantAccents, variant.stripes?.[0] || pride.stripes[0] || "red");
                             }
 
+                            const variant_meta = {
+                                ...meta,
+                                tags: [
+                                    ...meta.tags,
+                                    ...(variant.tags || []),
+                                ]
+                            };
+
                             // Export
-                            await exportSvg(`${pride.name} ${template.name} (${variant.name})`, `${prideId}-${variantId}-${templateId}`, template.meta ?? {}, variantRoot);
+                            await exportSvg(`${pride.name} ${template.name} (${variant.name})`, `${prideId}-${variantId}-${templateId}`, variant_meta, variantRoot);
                         }
                     }
                 }

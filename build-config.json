@@ -19,7 +19,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
                 ],
-                "license": "CC-BY-4.0"
+                "license": "CC-BY-4.0",
+                "tags": ["flag", "🏳️‍🌈"]
             }
         },
         "syringe": {
@@ -36,7 +37,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
                 ],
-                "license": "CC-BY-4.0"
+                "license": "CC-BY-4.0",
+                "tags": ["syringe", "needle", "medicine", "stab", "💉"]
             }
         },
         "heart": {
@@ -49,7 +51,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
                 ],
-                "license": "CC-BY-4.0"
+                "license": "CC-BY-4.0",
+                "tags": ["heart", "❤️"]
             }
         },
         "heart-d": {
@@ -62,7 +65,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
                 ],
-                "license": "CC-BY-4.0"
+                "license": "CC-BY-4.0",
+                "tags": ["heart", "❤️"]
             }
         },
         "ghost": {
@@ -75,7 +79,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Noto Emoji", "link": "https://github.com/googlefonts/noto-emoji/blob/617db977/svg/emoji_u1f47b.svg" }
                 ],
-                "license": "CC-BY-NC-4.0"
+                "license": "Apache License 2.0",
+                "tags": ["ghost", "👻"]
             }
         },
         "cat": {
@@ -88,7 +93,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Noto Emoji", "link": "https://github.com/googlefonts/noto-emoji/blob/f2a4f72b/svg/emoji_u1f408.svg" }
                 ],
-                "license": "CC-BY-NC-4.0"
+                "license": "Apache License 2.0",
+                "tags": ["cat", "kitty", "kitten", "meow", "🐱", "🐈"]
             }
         },
         "sparkling-heart": {
@@ -101,7 +107,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
                 ],
-                "license": "CC-BY-4.0"
+                "license": "CC-BY-4.0",
+                "tags": ["sparkle", "sparkling", "heart", "💖"]
             }
         },
         "sparkling-heart-d": {
@@ -114,7 +121,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
                 ],
-                "license": "CC-BY-4.0"
+                "license": "CC-BY-4.0",
+                "tags": ["sparkle", "sparkling", "heart", "💖"]
             }
         },
         "egg": {
@@ -127,7 +135,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Twemoji", "link": "https://twemoji.twitter.com/" }
                 ],
-                "license": "CC-BY-4.0"
+                "license": "CC-BY-4.0",
+                "tags": ["egg", "🥚"]
             }
         },
         "pill": {
@@ -140,7 +149,8 @@
                     { "name": "CyberPon3", "link": "https://twitter.com/CyberPon3" },
                     { "name": "Noto Emoji", "link": "https://github.com/googlefonts/noto-emoji/blob/341cf6add6aac745fc578197f0ac6bac5b93e010/svg/emoji_u1f48a.svg" }
                 ],
-                "license": "CC-BY-NC-4.0"
+                "license": "Apache License 2.0",
+                "tags": ["pill", "medicine", "💊"]
             }
         }
     },
@@ -156,7 +166,8 @@
             "accents": {
                 "drop1": "#670066",
                 "drop2": "#670066"
-            }
+            },
+            "tags": ["asexual", "ace", "a-spec"]
         },
         "agender": {
             "name": "Agender",
@@ -168,7 +179,8 @@
                 "#ffffff",
                 "#bcc5c6",
                 "#000000"
-            ]
+            ],
+            "tags": ["agender"]
         },
         "aro": {
             "name": "Aromantic",
@@ -178,7 +190,8 @@
                 "#fefefe",
                 "#a9a9a9",
                 "#000000"
-            ]
+            ],
+            "tags": ["aromantic", "aro", "a-spec"]
         },
         "bi": {
             "name": "Bisexual",
@@ -188,7 +201,8 @@
                 "#734f94",
                 "#0039a7",
                 "#0039a7"
-            ]
+            ],
+            "tags": ["bisexual", "bi"]
         },
         "enby": {
             "name": "Non-Binary",
@@ -197,7 +211,8 @@
                 "#ffffff",
                 "#9b59d0",
                 "#2d2d2d"
-            ]
+            ],
+            "tags": ["non-binary", "nonbinary", "enby", "nb"]
         },
         "gay": {
             "name": "Gay",
@@ -208,7 +223,8 @@
                 "#008121",
                 "#004cff",
                 "#760188"
-            ]
+            ],
+            "tags": ["gay", "mlm", "homosexuality", "homosexual", "homo"]
         },
         "fluid": {
             "name": "Genderfluid",
@@ -218,7 +234,8 @@
                 "#bf11d7",
                 "#000000",
                 "#2f3cbe"
-            ]
+            ],
+            "tags": ["genderfluid", "fluid"]
         },
         "genderqueer": {
             "name": "Genderqueer",
@@ -226,7 +243,8 @@
                 "#b67edc",
                 "#ffffff",
                 "#4b8124"
-            ]
+            ],
+            "tags": ["genderqueer", "gq"]
         },
         "lesbian": {
             "name": "Lesbian",
@@ -238,7 +256,8 @@
                 "#d162a6",
                 "#b75592",
                 "#a50162"
-            ]
+            ],
+            "tags": ["lesbian", "les", "wlw", "sapphic", "sappho", "homosexuality", "homosexual", "homo"]
         },
         "pan": {
             "name": "Pansexual",
@@ -246,7 +265,8 @@
                 "#ff218c",
                 "#fed800",
                 "#21b1ff"
-            ]
+            ],
+            "tags": ["pansexual", "pan"]
         },
         "polyamorous": {
             "name": "Polyamorous",
@@ -254,7 +274,8 @@
                 "#340c46",
                 "#e50051",
                 "#009fe3"
-            ]
+            ],
+            "tags": ["polyamorous", "polyamory", "polyam", "poly"]
         },
         "polysexual": {
             "name": "Polysexual",
@@ -262,7 +283,8 @@
                 "#f61cb9",
                 "#07d569",
                 "#1c92f6"
-            ]
+            ],
+            "tags": ["polysexual", "poly"]
         },
         "trans": {
             "name": "Transgender",
@@ -283,16 +305,19 @@
                     "accents": {
                         "drop1": "#5bcefa",
                         "drop2": "#5bcefa"
-                    }
+                    },
+                    "tags": ["transmasculine", "transmasc", "ftm", "f2m"]
                 },
                 "pink": {
                     "name": "Pink",
                     "accents": {
                         "drop1": "#f5a9b8",
                         "drop2": "#f5a9b8"
-                    }
+                    },
+                    "tags": ["transfeminine", "transfemme", "transfem", "mtf", "m2f"]
                 }
-            }
+            },
+            "tags": ["transgender", "trans"]
         },
         "androgyne": {
             "name": "Androgyne",
@@ -300,7 +325,8 @@
                 "#fe007f",
                 "#9832ff",
                 "#00b8e7"
-            ]
+            ],
+            "tags": ["androgyne", "androgynous", "andro"]
         },
         "aroace": {
             "name": "Aromantic Asexual",
@@ -331,7 +357,8 @@
                         "drop2": "#3ca542"
                     }
                 }
-            }
+            },
+            "tags": ["aroace", "aromantic", "asexual", "aro", "ace", "a-spec"]
         }
     }
 }
