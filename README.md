@@ -1,7 +1,7 @@
 Pridemoji
 =========
 
-A collection of pride-themed emoji for slack/discord/etc.
+An emoji generator that creates pride-themed emoji for slack/discord/etc.
 
 [Download](https://github.com/Tschrock/pridemoji/releases/latest/download/pridemoji.zip)
 
