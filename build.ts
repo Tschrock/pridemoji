@@ -19,6 +19,7 @@ interface CombinationConfig {
 
 interface TemplateConfig {
     name: string;
+    overwriteAliasId?: string;
     templateFile: string;
     stripesId: string;
     stripesRotation?: number;
@@ -95,6 +96,7 @@ function roundToDecimal(num: number, decimals: number): string {
 function getRotatedBounds(pathElement: Element, rotation: number) {
     const path = pathElement.getAttribute("d") || "";
     const bounds = new SVGPathData(path)
+        .normalizeHVZ()
         .rotate(rotation * (Math.PI / 180))
         .getBounds();
     return {
@@ -159,6 +161,21 @@ function fillStripes(templateDom: Element, id: string, stripes: string[], rotati
     const bb = getRotatedBounds(stripeContainer, rotation);
 
     if (DEBUG) {
+        const stripeContainerPath = stripeContainer.getAttribute("d") || "";
+        const stripeContainerPathRotated = new SVGPathData(stripeContainerPath)
+            .normalizeHVZ()
+            .rotate(rotation * (Math.PI / 180))
+            .encode();
+
+        addElement(templateDom, "path", {
+            d: stripeContainerPathRotated,
+            fill: "none",
+            stroke: "black",
+            "stroke-width": 0.5,
+            id: "StripeContainerWithRotation"
+        });
+
+
         addElement(templateDom, "rect", {
             x: roundToDecimal(bb.x, 3),
             y: roundToDecimal(bb.y, 3),
@@ -166,7 +183,8 @@ function fillStripes(templateDom: Element, id: string, stripes: string[], rotati
             height: roundToDecimal(bb.h, 3),
             fill: "none",
             stroke: "red",
-            "stroke-width": 0.5
+            "stroke-width": 0.5,
+            id: "StripeContainerBoundsWithRotation"
         });
 
         const bb2 = getPathBounds(stripeContainer);
@@ -176,13 +194,17 @@ function fillStripes(templateDom: Element, id: string, stripes: string[], rotati
             y: roundToDecimal(bb2.y, 3),
             width: roundToDecimal(bb2.w, 3),
             height: roundToDecimal(bb2.h, 3),
-            fill: "none", stroke: "#00ffff", "stroke-width": 0.5
+            fill: "none",
+            stroke: "#00ffff",
+            "stroke-width": 0.5,
+            id: "StripeContainerBoundsWithoutRotation"
         });
 
         addElement(templateDom, stripeContainer.cloneNode() as Element, {
             fill: "none",
             stroke: "#ff00ff",
             "stroke-width": "0.5",
+            id: "StripeContainer"
         });
     }
 
@@ -248,7 +270,9 @@ function parseSVG(svg: string): Element {
 
 async function run() {
     // Read the build config
-    const buildConfig: BuildConfig = JSON.parse(await readFile("./build-config.json", { encoding: "utf-8" }));
+    let buildConfigJson = await readFile("./build-config.json", { encoding: "utf-8" });
+    buildConfigJson = buildConfigJson.replace(/^\W*\/\/.*$/gm, ""); // Remove comments
+    const buildConfig: BuildConfig = JSON.parse(buildConfigJson);
 
     // Clean the dist directory
     await rm("./dist", { force: true, recursive: true });
@@ -329,7 +353,8 @@ async function run() {
                 }
 
                 // Export
-                await exportSvg(`${pride.name} ${template.name}`, `${prideId}-${templateId}`, meta, root);
+                const exportTemplateId = template.overwriteAliasId || templateId;
+                await exportSvg(`${pride.name} ${template.name}`, `${prideId}-${exportTemplateId}`, meta, root);
 
                 // Handle variants
                 if (pride.variants) {
@@ -358,7 +383,7 @@ async function run() {
                             };
 
                             // Export
-                            await exportSvg(`${pride.name} ${template.name} (${variant.name})`, `${prideId}-${variantId}-${templateId}`, variant_meta, variantRoot);
+                            await exportSvg(`${pride.name} ${template.name} (${variant.name})`, `${prideId}-${variantId}-${exportTemplateId}`, variant_meta, variantRoot);
                         }
                     }
                 }

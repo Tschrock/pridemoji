@@ -70,6 +70,10 @@
                             "description": "The full name of the template.",
                             "type": "string"
                         },
+                        "overwriteAliasId": {
+                            "description": "The id that should be used when generating emoji names. If this matches the id of another template it, generated emojis can overwrite each other.",
+                            "type": "string"
+                        },
                         "templateFile": {
                             "description": "A path to the SVG template file.",
                             "type": "string"
@@ -89,6 +93,10 @@
                                 "description": "The id of the accent element.",
                                 "type": "string"
                             }
+                        },
+                        "meta": {
+                            "description": "The angle the stripes should be drawn at.",
+                            "type": "object"
                         }
                     },
                     "required": [
@@ -164,6 +172,14 @@
                                                     "format": "color-hex"
                                                 }
                                             }
+                                        },
+                                        "tags": {
+                                            "description": "A list of tags for the pride.",
+                                            "type": "array",
+                                            "items": {
+                                                "description": "A tag for the pride.",
+                                                "type": "string"
+                                            }
                                         }
                                     },
                                     "required": [
@@ -173,6 +189,14 @@
                                 }
                             },
                             "additionalProperties": false
+                        },
+                        "tags": {
+                            "description": "A list of tags for the pride.",
+                            "type": "array",
+                            "items": {
+                                "description": "A tag for the pride.",
+                                "type": "string"
+                            }
                         }
                     },
                     "required": [
