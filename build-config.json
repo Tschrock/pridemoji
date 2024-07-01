@@ -27,6 +27,7 @@
                 "aro",
                 "bi",
                 "enby",
+                "femboy",
                 "gay",
                 "fluid",
                 "genderqueer",
@@ -397,6 +398,23 @@
                 "nonbinary",
                 "enby",
                 "nb"
+            ]
+        },
+        "femboy": {
+            "name": "Femboy",
+            "stripes": [
+                "#D35EA5",
+                "#E7B0CF",
+                "#FFFFFF",
+                "#54CDFA",
+                "#FFFFFF",
+                "#E7B0CF",
+                "#D35EA5"
+            ],
+            "tags": [
+                "femboy",
+                "femboi",
+                "fem"
             ]
         },
         "gay": {
