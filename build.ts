@@ -1,7 +1,6 @@
 import { readFile, rm, mkdir, writeFile } from 'fs/promises';
 
-// @ts-ignore, https://github.com/svgdotjs/svgdom/issues/69
-import { createSVGDocument, HTMLParser } from 'svgdom';
+import { createDocument, HTMLParser } from 'svgdom';
 import { SVGPathData } from 'svg-pathdata';
 import { renderAsync as renderSVG } from '@resvg/resvg-js';
 import YAML from 'json-to-pretty-yaml';
@@ -263,7 +262,7 @@ function fillAccents(element: Element, accentIds: string[], accentColors: Map<st
 }
 
 function parseSVG(svg: string): Element {
-    const document = createSVGDocument() as HTMLDocument;
+    const document = createDocument("http://www.w3.org/2000/svg", null);
     HTMLParser(svg, document);
     return document.documentElement;
 }
