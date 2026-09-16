@@ -13,7 +13,9 @@
                 "sparkling-heart",
                 "sparkling-heart-d",
                 "egg",
-                "pill"
+                "pill",
+                "dragnowo",
+                "dragnowo-d"
             ],
             "prides": "*"
         },
@@ -318,6 +320,64 @@
                     "pill",
                     "medicine",
                     "💊"
+                ]
+            }
+        },
+        "dragnowo": {
+            "name": "Dragon OwO",
+            "templateFile": "./templates/dragnowo.svg",
+            "stripesId": "stripes",
+            "stripesRotation": 0,
+            "meta": {
+                "sources": [
+                    {
+                        "name": "Octavia Togami",
+                        "link": "https://octyl.net/"
+                    },
+                    {
+                        "name": "dragn-emoji",
+                        "link": "https://github.com/chr-1x/dragn-emoji/blob/master/dragnowo.svg"
+                    }
+                ],
+                "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International",
+                "tags": [
+                    "dragon",
+                    "dragn",
+                    "🐉",
+                    "🐲",
+                    "wyvern",
+                    "wyrm",
+                    "serpent",
+                    "owo"
+                ]
+            }
+        },
+        "dragnowo-d": {
+            "name": "Dragon OwO Diagonal",
+            "templateFile": "./templates/dragnowo.svg",
+            "stripesId": "stripes",
+            "stripesRotation": 45,
+            "meta": {
+                "sources": [
+                    {
+                        "name": "Octavia Togami",
+                        "link": "https://octyl.net/"
+                    },
+                    {
+                        "name": "dragn-emoji",
+                        "link": "https://github.com/chr-1x/dragn-emoji/blob/master/dragnowo.svg"
+                    }
+                ],
+                "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International",
+                "tags": [
+                    "dragon",
+                    "dragn",
+                    "🐉",
+                    "🐲",
+                    "wyvern",
+                    "wyrm",
+                    "serpent",
+                    "owo"
                 ]
             }
         }
