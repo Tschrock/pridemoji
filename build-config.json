@@ -353,7 +353,7 @@
             }
         },
         "dragnowo-d": {
-            "name": "Dragon OwO Diagonal",
+            "name": "Diagonal Dragon OwO",
             "templateFile": "./templates/dragnowo.svg",
             "stripesId": "stripes",
             "stripesRotation": 45,
